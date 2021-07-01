@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Calculator</title>
+        <link href="styles.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <header>
+            <h1>Calculator</h1>
+        </header>
+
+
+    <div id='calculator'>
+
+        <table>
+            <thead>
+                <!--A text field will be put here representing the calculator's "screen". Will be editable manually or with buttons to build math expressions-->
+                <tr>
+                    <th colspan="4"><input type="text" id='screen'></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><button class='operator-button' id='left-parenthesis'>(</button></td>
+                    <td><button class='operator-button' id='right-parenthesis'>)</button></td>
+                    <td><button class='operator-button' id='carrot'>^</button></td>
+                    <td><button class='operator-button' id='all-clear'>AC</button></td>
+                </tr>
+                <tr>
+                    <td><button class='number-button' id='seven'>7</button></td>
+                    <td><button class='number-button' id='eight'>8</button></td>
+                    <td><button class='number-button' id='nine'>9</button></td>
+                    <td><button class='operator-button' id='divide'>&#247</button></td>
+                </tr>
+                <tr>
+                    <td><button class='number-button' id='four'>4</button></td>
+                    <td><button class='number-button' id='five'>5</button></td>
+                    <td><button class='number-button' id='six'>6</button></td>
+                    <td><button class='operator-button' id='multiply'>x</button></td>
+                </tr>
+                <tr>
+                    <td><button class='number-button' id='one'>1</button></td>
+                    <td><button class='number-button' id='two'>2</button></td>
+                    <td><button class='number-button' id='three'>3</button></td>
+                    <td><button class='operator-button' id='subtract'>-</button></td>
+                </tr>
+                <tr>
+                    <td><button class='number-button' id='zero'>0</button></td>
+                    <td><button class='number-button' id='decimal'>.</button></td>
+                    <td><button class='operator-button' id='equals'>=</button></td>
+                    <td><button class='operator-button' id='add'>+</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src='script.js'></script>
+    </body>
+</html>

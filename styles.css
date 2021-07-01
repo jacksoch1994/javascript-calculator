@@ -1,0 +1,23 @@
+html {
+    background-color: aliceblue;
+}
+h1 {
+    text-align: center;
+}
+#calculator {
+    margin: auto;
+    width: 50%;
+}
+
+button {
+    padding: 0;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    line-height: 50px;
+}
+
+#screen {
+    height: 40px;
+    width: 100%;
+}
