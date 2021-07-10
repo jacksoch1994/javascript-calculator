@@ -5,7 +5,7 @@ const regEx = /\d/;
 
 //Function that tests if all characters in the text field are allowed in an equation. (Only digits, mathematical operators, and parentheses are allowed.)
 function hasValidCharacters(str) {
-    if (str.split(/[0-9()+\-/*x.]/).join('')) {
+    if (str.split(/[0-9()^+\-/*x]\.?\s*/).join('')) {
         return false;
     } else {
         return true;
@@ -288,6 +288,18 @@ document.getElementById('right-parenthesis').onclick = () => {
 
 document.getElementById('equals').onclick = () => {
     let equation = screen.value;
-
+    if (hasValidCharacters(equation)) {
+        equation = stringToList(equation);
+        if (hasValidSyntax(equation)) {
+            screen.value = evaluateEquation(equation);
+        } else {
+            console.log('Invalid Syntax');
+        }
+    } else {
+        console.log('Invalid Characters');
+    }
 }
 
+document.getElementById('all-clear').onclick = () => {
+    screen.value = '';
+}
