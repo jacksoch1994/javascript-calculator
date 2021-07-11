@@ -126,7 +126,7 @@ function performOperation(num1, num2, operator) {
 //Function that evaluates the provided list. Returns a value.
 function evaluateEquation(arr) {
     let parenthesesEvaluated = false;
-    console.log(arr);
+
     //Loop to evaluate all parentheses within the equation before performing mathematical operations on the rest of the equation. 
     //Recursively calls the function once the inner most pair is met. Process continues until there are no more parentheses left in the equation.
     while (!parenthesesEvaluated) {
@@ -137,8 +137,6 @@ function evaluateEquation(arr) {
                 leftParenthesisIndex = i;
                 
             } else if (arr[i] === ')') {
-                console.log(leftParenthesisIndex);
-                console.log(i);
                 arr = arr.slice(0, leftParenthesisIndex).concat(evaluateEquation(arr.slice(leftParenthesisIndex + 1, i))).concat(arr.slice(i + 1));
                 break;
             } else if (i === arr.length - 1) {
@@ -179,9 +177,28 @@ function evaluateEquation(arr) {
             }
         }
 
+        console.log(arr);
+
         //Evaluate each grouping of two Numbers and Operators.
+        let loopCount = 1;
         while (arr.length > 1) {
-            arr.splice(0, 3, performOperation(arr[0], arr[2], arr[1]));  
+            
+            //Loops through equation 5 times to evaluate operators in the order of operations.
+            for (let i = 0; i < arr.length; i++) {
+                if (loopCount === 1 && arr[i] === '^') {
+                    arr.splice(i - 1, 3, performOperation(arr[i + 1], arr[i - 1], arr[i]));
+                } else if (loopCount === 2 && arr[i] === 'x' || arr[i] === '*') {
+                    arr.splice(i - 1, 3, performOperation(arr[i + 1], arr[i - 1], arr[i]));
+                } else if (loopCount === 3 && arr[i] === '/') {
+                    arr.splice(i - 1, 3, performOperation(arr[i + 1], arr[i - 1], arr[i]));
+                } else if (loopCount === 4 && arr[i] === '+') {
+                    arr.splice(i - 1, 3, performOperation(arr[i + 1], arr[i - 1], arr[i]));
+                } else if (loopCount === 5 && arr[i] === '-') {
+                    arr.splice(i - 1, 3, performOperation(arr[i + 1], arr[i - 1], arr[i]));
+                }
+                
+            }
+            loopCount++;
         }
         
 
@@ -294,9 +311,11 @@ document.getElementById('equals').onclick = () => {
             screen.value = evaluateEquation(equation);
         } else {
             console.log('Invalid Syntax');
+            alert('Invalid Syntax');
         }
     } else {
         console.log('Invalid Characters');
+        alert('Invalid Characters');
     }
 }
 
